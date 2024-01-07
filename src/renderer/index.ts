@@ -23,6 +23,8 @@ import type SettingsPlugin from "@vencord/types/plugins/_core/settings";
 VesktopLogger.log("read if cute :3");
 VesktopLogger.log("Vesktop v" + VesktopNative.app.getVersion());
 
+export const keybindCallbacks: { [id: string]: Function } = {};
+
 const customSettingsSections = (Vencord.Plugins.plugins.Settings as any as typeof SettingsPlugin).customSections;
 
 customSettingsSections.push(() => ({

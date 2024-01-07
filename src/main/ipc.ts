@@ -13,6 +13,7 @@ import {
     clipboard,
     dialog,
     IpcMainInvokeEvent,
+    globalShortcut,
     nativeImage,
     RelaunchOptions,
     session,
@@ -158,6 +159,20 @@ function openDebugPage(page: string) {
 
 handle(IpcEvents.DEBUG_LAUNCH_GPU, () => openDebugPage("chrome://gpu"));
 handle(IpcEvents.DEBUG_LAUNCH_WEBRTC_INTERNALS, () => openDebugPage("chrome://webrtc-internals"));
+
+const registered_keybinds = {};
+
+handle(IpcEvents.KEYBIND_REGISTER, (_, id: string, shortcut: string) => {
+    globalShortcut.register(shortcut, () => {
+        // false here implies `keyup`
+        // electron's global shortcut system doesn't really register keyup or down as far as i can tell
+        mainWin.webContents.executeJavaScript(`Vesktop.keybindCallbacks["${id}"](false)`);
+    });
+    registered_keybinds[id] = shortcut;
+});
+handle(IpcEvents.KEYBIND_UNREGISTER, (_, id: string) => {
+    globalShortcut.unregister(registered_keybinds[id]);
+});
 
 function readCss() {
     return readFile(VENCORD_QUICKCSS_FILE, "utf-8").catch(() => "");
