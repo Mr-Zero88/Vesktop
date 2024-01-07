@@ -97,7 +97,8 @@ export const VesktopNative = {
         respond: (response: IpcResponse) => ipcRenderer.send(IpcEvents.IPC_COMMAND, response)
     },
     keybind: {
-        register: (id: string, shortcut: string) => invoke<void>(IpcEvents.KEYBIND_REGISTER, id, shortcut),
-        uregister: (id: string) => invoke<void>(IpcEvents.KEYBIND_UNREGISTER, id)
+        register: (id: number, shortcut: string, options: any) =>
+            invoke<void>(IpcEvents.KEYBIND_REGISTER, id, shortcut),
+        uregister: (id: number) => invoke<void>(IpcEvents.KEYBIND_UNREGISTER, id)
     }
 };
