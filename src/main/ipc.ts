@@ -160,15 +160,6 @@ function openDebugPage(page: string) {
 handle(IpcEvents.DEBUG_LAUNCH_GPU, () => openDebugPage("chrome://gpu"));
 handle(IpcEvents.DEBUG_LAUNCH_WEBRTC_INTERNALS, () => openDebugPage("chrome://webrtc-internals"));
 
-const registered_keybinds = {};
-
-handle(IpcEvents.KEYBIND_REGISTER, (_, id: number, shortcut: string, options: any) => {
-    registered_keybinds[id] = shortcut;
-});
-handle(IpcEvents.KEYBIND_UNREGISTER, (_, id: number) => {
-    delete registered_keybinds[id];
-});
-
 function readCss() {
     return readFile(VENCORD_QUICKCSS_FILE, "utf-8").catch(() => "");
 }
