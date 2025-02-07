@@ -23,8 +23,8 @@ importers:
         specifier: ^6.6.2
         version: 6.6.2(patch_hash=080505564abb2ebbda932bbf8fe91540c74dd905de994888d52ffce6f882f887)
       venbind:
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.3
+        version: 0.0.3
     devDependencies:
       '@fal-works/esbuild-plugin-global-externals':
         specifier: ^2.1.2
@@ -4212,7 +4212,9 @@ packages:
     venbind@0.0.2:
         resolution:
             {
-                integrity: sha512-TlkghnnV43lmINTMOuZWvgRIIZJ3I5oNykXbGZPC22GE7gdoen9uPBWWEKLtN7BG4wjtT/dIAv2Xz9gHz9P4Gw==
+                integrity: sha512-irlmr5Qeo9pSejGF5nATwzn5ramkEuJzjDMExrPA0p1DrNfFpUqyDsA05edUfHB2R4S9iyuILZG9zDQVKB3O3w==,
+                cpu: [x64],
+                os: [linux, win32]
             }
 
     verror@1.10.1:
@@ -7641,7 +7643,7 @@ snapshots:
 
     util-deprecate@1.0.2: {}
 
-    venbind@0.0.2: {}
+    venbind@0.0.3: {}
 
     verror@1.10.1:
         dependencies:
