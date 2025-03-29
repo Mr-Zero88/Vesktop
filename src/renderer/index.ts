@@ -24,7 +24,7 @@ VesktopLogger.log("read if cute :3");
 VesktopLogger.log("Vesktop v" + VesktopNative.app.getVersion());
 
 export const keybindCallbacks: {
-    [id: number]: {
+    [id: string]: {
         onTrigger: Function;
         keyEvents: {
             keyup: boolean;
@@ -34,7 +34,7 @@ export const keybindCallbacks: {
 } = {};
 
 
-export async function triggerKeybind(id: number, keyup: boolean) {
+export async function triggerKeybind(id: string, keyup: boolean) {
     var cb = keybindCallbacks[id];
     if (cb.keyEvents.keyup && keyup) {
         cb.onTrigger(false);
