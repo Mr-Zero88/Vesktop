@@ -58,7 +58,7 @@
         "typescript-eslint": "^8.35.1",
         "xml-formatter": "^3.6.6"
     },
-    "packageManager": "pnpm@10.7.1",
+    "packageManager": "pnpm@10.13.1",
     "engines": {
         "node": ">=18",
         "pnpm": ">=8"
